@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>test2</title>
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <body>
+        <input type="test" id="name">
+        <input type="submit" id="OK">
+        
+        <script>
+            $('#OK').click(function(){
+                $.ajax({
+                    url: '/postTest',
+                    ayanc: true, //동기화(서버에서 반응이 올때까지 기다린다.)
+                    type: 'POST',
+                    data:{
+                        test:$('#name').val()
+                    },
+                    dataType: 'json',
+                    success: function(data){
+                        alert('보내기 성공');
+                        console.log(data)
+                    }, error: function(err){
+                        alert('보내기 실패 ' + err)
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>
